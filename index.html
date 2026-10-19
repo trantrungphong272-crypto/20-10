@@ -387,7 +387,6 @@
     <span class="mh-toggle">▼</span>
   </button>
   <div class="music-list" id="musicList">
-    <!-- ⭐ CHỈ CÒN BÀI NÀY — file MP3 local -->
     <button class="music-item" data-url="nguoi-gieo-mam-xanh.mp3">
       <span class="mi-icon">🌱</span>
       <span class="mi-name">Người Gieo Mầm Xanh</span>
@@ -411,7 +410,7 @@
     <p class="sub">Lời chúc 20/10 từ Người bí ẩn 💌</p>
     <div class="hint">
       Bấm nút để thả lời chúc bay lượn ✨<br>
-      <strong>Mở đủ 11 lời chúc</strong> để nhận bất ngờ đặc biệt 🌹<br>
+      <strong>Mở đủ 5 lời chúc</strong> để nhận bất ngờ đặc biệt 🌹<br>
       Bấm <strong>🎵 Nhạc nền</strong> góc phải để nghe nhạc
     </div>
   </header>
@@ -434,8 +433,8 @@
   <div class="mp-header" id="mpHeader">
     <span>📋 Ý nghĩa lời chúc</span>
     <span class="mp-count">
-      Đang bay: <strong id="activeCount">0</strong>/11<br>
-      Đã mở: <strong class="seen" id="seenCount">0</strong>/11
+      Đang bay: <strong id="activeCount">0</strong>/20<br>
+      Đã mở: <strong class="seen" id="seenCount">0</strong>/20
     </span>
     <span class="toggle-icon">▼</span>
   </div>
@@ -570,19 +569,28 @@ const CUTE_URI = CUTE_IMAGES.map(svg =>
   'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg.replace(/\s+/g, ' ').trim())
 );
 
-/* ============ DỮ LIỆU LỜI CHÚC ============ */
+/* ============ DỮ LIỆU LỜI CHÚC (20 LỜI) ============ */
 const WISH_DATA = [
-  { text: "Nhân ngày 20/10, con chúc mẹ yêu luôn mạnh khỏe, hạnh phúc và mãi là chỗ dựa tinh thần vững chắc cho chúng con. Con yêu mẹ rất nhiều!", label: "Chúc mẹ yêu", meaning: "Mẹ khỏe mạnh, hạnh phúc, là điểm tựa tinh thần", icon: "💐" },
-  { text: "Cảm ơn mẹ vì đã hy sinh cả đời vì gia đình. Chúc người phụ nữ tuyệt vời nhất của con luôn rạng rỡ, bình an và sống thật lâu cùng con cháu.", label: "Cảm ơn mẹ", meaning: "Tri ân sự hy sinh cả đời của mẹ", icon: "🌷" },
-  { text: "Gửi đến bà và mẹ những lời chúc tốt đẹp nhất nhân ngày Phụ nữ Việt Nam. Mong bà và mẹ luôn giữ gìn sức khỏe, vui vẻ và an yên mỗi ngày.", label: "Chúc bà và mẹ", meaning: "Sức khỏe, vui vẻ, an yên mỗi ngày", icon: "🌸" },
-  { text: "Chúc cô bạn thân của tôi ngày 20/10 nhận được thật nhiều quà, luôn xinh đẹp, vui vẻ và sớm tìm được hoàng tử của đời mình nhé!", label: "Chúc bạn thân", meaning: "Nhiều quà, xinh đẹp, sớm có hoàng tử", icon: "💖" },
-  { text: "Nhân ngày Phụ nữ Việt Nam, chúc chị/em gái của tôi luôn tự tin, yêu đời, luôn tỏa sáng theo cách riêng và đạt được mọi dự định trong tương lai.", label: "Chúc chị/em gái", meaning: "Tự tin, yêu đời, toả sáng, đạt dự định", icon: "✨" },
-  { text: "Chúc nửa thế giới ngày 20/10 luôn rực rỡ như những đóa hoa, cuộc sống ngập tràn tiếng cười và những điều tốt đẹp nhất.", label: "Chúc nửa thế giới", meaning: "Rực rỡ, ngập tràn tiếng cười", icon: "🌺" },
-  { text: "Mong rằng ngày 20/10 này và 364 ngày còn lại trong năm, bạn đều được yêu thương, trân trọng và hạnh phúc trọn vẹn.", label: "Chúc 365 ngày", meaning: "Yêu thương suốt cả năm, không chỉ 20/10", icon: "💌" },
-  { text: "Chúc toàn thể chị em phụ nữ ngày 20/10 ngập tràn hạnh phúc, luôn là những bông hoa tươi thắm tỏa hương thơm cho đời.", label: "Chúc chị em phụ nữ", meaning: "Hạnh phúc, toả hương cho đời", icon: "🌹" },
-  { text: "Phụ nữ sinh ra là để được yêu thương. Chúc bạn ngày 20/10 thật ý nghĩa, luôn vui tươi và tràn đầy năng lượng tích cực!", label: "Phụ nữ xứng đáng", meaning: "Ý nghĩa, vui tươi, tích cực", icon: "💕" },
-  { text: "Chúc mừng ngày Phụ nữ Việt Nam 20/10! Mong rằng tất cả phụ nữ trên thế giới luôn được đối xử dịu dàng và trân trọng.", label: "Chúc phụ nữ thế giới", meaning: "Được dịu dàng và trân trọng", icon: "🌍" },
-  { text: "Ngày 20/10 chúc một nửa thế giới luôn xinh đẹp, tự tin, bản lĩnh và gặt hái được nhiều thành công rực rỡ trên con đường mình chọn.", label: "Chúc thành công", meaning: "Tự tin, bản lĩnh, gặt hái thành công", icon: "🏆" }
+  { text: "Chúc toàn thể chị em phụ nữ ngày 20/10 luôn xinh đẹp, rạng rỡ và ngập tràn niềm vui!", label: "Chúc chị em phụ nữ", meaning: "Xinh đẹp, rạng rỡ, niềm vui", icon: "🌸" },
+  { text: "Chúc một nửa thế giới ngày Phụ nữ Việt Nam thật hạnh phúc, ngọt ngào và luôn nhận được thật nhiều yêu thương.", label: "Chúc một nửa thế giới", meaning: "Hạnh phúc, ngọt ngào, yêu thương", icon: "🌍" },
+  { text: "Nhân ngày 20/10, chúc cho tất cả phái đẹp luôn tự tin, yêu đời và tỏa sáng theo cách riêng của mình.", label: "Chúc phái đẹp", meaning: "Tự tin, yêu đời, tỏa sáng", icon: "✨" },
+  { text: "Chúc mọi người có một ngày 20/10 tràn ngập hoa, quà và những lời chúc trọn vẹn nhất.", label: "Chúc ngày 20/10", meaning: "Hoa, quà, trọn vẹn", icon: "🎁" },
+  { text: "Phụ nữ sinh ra là để được trân trọng và yêu thương. Chúc tất cả chị em ngày hôm nay và cả 364 ngày còn lại đều luôn hạnh phúc!", label: "Phụ nữ xứng đáng", meaning: "Trân trọng, yêu thương 365 ngày", icon: "💖" },
+  { text: "Mừng ngày Phụ nữ Việt Nam 20/10! Chúc mọi người luôn trẻ trung, tươi tắn và ngập tràn năng lượng tích cực.", label: "Mừng ngày 20/10", meaning: "Trẻ trung, tươi tắn, tích cực", icon: "🌻" },
+  { text: "Chúc chị em 20/10 tài khoản nổ số, công việc thuận lợi và lúc nào cũng vui tươi!", label: "Chúc tài khoản nổ số", meaning: "Công việc thuận lợi, vui tươi", icon: "💰" },
+  { text: "Gửi lời chúc dịu dàng nhất đến tất cả những người phụ nữ tuyệt vời xung quanh chúng ta. Chúc mọi người 20/10 thật ý nghĩa!", label: "Lời chúc dịu dàng", meaning: "Người phụ nữ tuyệt vời, ý nghĩa", icon: "🕊️" },
+  { text: "Chúc mọi người ngày 20/10 thật nhiều niềm vui, luôn cười rạng rỡ và luôn là chính mình.", label: "Chúc niềm vui", meaning: "Cười rạng rỡ, là chính mình", icon: "😊" },
+  { text: "Happy Vietnamese Women's Day! Chúc một nửa thế giới luôn xinh đẹp, bản lĩnh và thành công.", label: "Happy Women's Day", meaning: "Xinh đẹp, bản lĩnh, thành công", icon: "🌹" },
+  { text: "Chúc tất cả phụ nữ luôn giữ vững sự tự tin, sức mạnh nội tâm và vững bước trên con đường mình đã chọn.", label: "Chúc sự tự tin", meaning: "Sức mạnh nội tâm, vững bước", icon: "💪" },
+  { text: "Nhân ngày 20/10, chúc cho mỗi người phụ nữ đều tìm thấy sự bình an, niềm vui và những khoảnh khắc dịu dàng trong cuộc sống.", label: "Chúc bình an", meaning: "Niềm vui, khoảnh khắc dịu dàng", icon: "🍃" },
+  { text: "Bạn là duy nhất và vô giá. Chúc tất cả chị em một ngày 20/10 luôn trân quý bản thân và sống trọn vẹn mỗi ngày.", label: "Bạn là duy nhất", meaning: "Trân quý bản thân, sống trọn vẹn", icon: "🌟" },
+  { text: "Chúc phái đẹp luôn rực rỡ như những đóa hoa mùa xuân, luôn tỏa hương và mang lại niềm vui cho đời.", label: "Chúc rực rỡ", meaning: "Như hoa mùa xuân, tỏa hương", icon: "🌺" },
+  { text: "Mong rằng mỗi ngày trôi qua, tất cả người phụ nữ đều cảm nhận được sự trân trọng và yêu thương từ những điều nhỏ bé nhất.", label: "Chúc được trân trọng", meaning: "Yêu thương từ điều nhỏ bé", icon: "💕" },
+  { text: "Chúc chị em ngày 20/10: Tay cầm nhiều hoa, giỏ xách đầy quà, ăn hoài không béo và lúc nào cũng cười xòa!", label: "Chúc nhiều hoa quà", meaning: "Ăn hoài không béo, cười xòa", icon: "🛍️" },
+  { text: "Mừng 20/10! Chúc các bóng hồng luôn trẻ trung như tuổi 18, xinh đẹp không cần app và tiền tiêu không cần nghĩ.", label: "Chúc trẻ trung", meaning: "Xinh đẹp không cần app, tiền tiêu", icon: "💃" },
+  { text: "Chúc chị em ngày hôm nay làm ít chơi nhiều, nhận quà liên tục và có một ngày cực kỳ thư thái!", label: "Chúc thư thái", meaning: "Làm ít chơi nhiều, nhận quà", icon: "🏖️" },
+  { text: "Gửi đến toàn thể chị em lời chúc 20/10: Nhan sắc thăng hoa, công việc suôn sẻ và tình yêu cập bến.", label: "Chúc thăng hoa", meaning: "Nhan sắc, công việc, tình yêu", icon: "🥂" },
+  { text: "Chúc một nửa thế giới có ngày 20/10 trọn vẹn niềm vui, không chỉ hôm nay mà ngày nào cũng là ngày đáng mừng!", label: "Chúc trọn vẹn", meaning: "Ngày nào cũng đáng mừng", icon: "🎉" }
 ];
 
 const WISHES = WISH_DATA.map(w => w.text);
@@ -598,8 +606,17 @@ function enforceLimit(wish) {
   while (same.length > MAX_PER_WISH) vanishItem(same.shift());
 }
 
+/* Hàm chọn lời chúc: 90% ra lời mới, 10% có thể trùng */
+function getWish() {
+  const unseen = WISHES.filter(w => !seenWishes.has(w));
+  if (unseen.length > 0 && Math.random() > 0.1) {
+    return rand(unseen);
+  }
+  return rand(WISHES);
+}
+
 function spawnFloating(x, y) {
-  const wish = rand(WISHES);
+  const wish = getWish();
   enforceLimit(wish);
 
   const el = document.createElement('div');
@@ -640,7 +657,7 @@ function spawnFloating(x, y) {
 
   if (!seenWishes.has(wish)) {
     seenWishes.add(wish);
-    if (seenWishes.size >= WISH_DATA.length && !celebrationShown) {
+    if (seenWishes.size >= 5 && !celebrationShown) {
       setTimeout(() => {
         if (!celebrationShown) {
           celebrationShown = true;
@@ -842,7 +859,7 @@ function showCelebration() {
       </div>
 
       <h2 class="celebration-title">🌹 Chúc mừng bạn! 🌹</h2>
-      <p class="celebration-msg">Bạn đã mở đủ <strong>11 lời chúc</strong> yêu thương</p>
+      <p class="celebration-msg">Bạn đã mở đủ <strong>5 lời chúc</strong> yêu thương</p>
       <p class="celebration-warm">
         Chúc bạn ngày 20/10 thật hạnh phúc,<br>
         ấm áp và ngập tràn yêu thương! 💐
