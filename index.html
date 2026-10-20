@@ -72,7 +72,7 @@
   footer { text-align: center; margin-top: 40px; padding-bottom: 40px; font-size: 13px; color: #b3a1aa; }
 
   /* ============================================================
-     BẢNG NHẠC — CHỈ 1 BÀI MP3 LOCAL
+     BẢNG NHẠC
      ============================================================ */
   .music-panel {
     position: fixed; top: 16px; right: 16px; z-index: 10001;
@@ -379,25 +379,38 @@
 </head>
 <body>
 
-<!-- ============ BẢNG NHẠC — CHỈ 1 BÀI ============ -->
+<!-- ============ BẢNG NHẠC ============ -->
 <div class="music-panel" id="musicPanel">
   <button class="music-header" id="musicHeader">
     <span class="mh-icon" id="musicIcon">🎵</span>
     <span class="mh-title" id="musicTitle">Nhạc nền</span>
     <span class="mh-toggle">▼</span>
   </button>
+  
+  <!-- ĐÂY LÀ PHẦN BẠN VỪA GỬI, ĐÃ ĐƯỢC CHÈN VÀO -->
   <div class="music-list" id="musicList">
+    <!-- Bài cũ -->
     <button class="music-item" data-url="nguoi-gieo-mam-xanh.mp3">
       <span class="mi-icon">🌱</span>
       <span class="mi-name">Người Gieo Mầm Xanh</span>
       <span class="mi-dot"></span>
     </button>
+
+    <!-- ⭐ BÀI MỚI CỦA BẠN Ở ĐÂY ⭐ -->
+    <button class="music-item" data-url="bai-hat-cua-toi.mp3">
+      <span class="mi-icon">🎵</span>
+      <span class="mi-name">Nhạc Chill</span>
+      <span class="mi-dot"></span>
+    </button>
+    <!-- ------------------------- -->
+
     <div class="music-divider"></div>
     <button class="music-item music-stop" id="musicStop">
       <span class="mi-icon">🔇</span>
       <span class="mi-name">Tắt nhạc</span>
     </button>
   </div>
+  
   <div class="music-status" id="musicStatus">Bấm để phát nhạc nền</div>
 </div>
 
@@ -443,7 +456,7 @@
 
 <script>
 /* ============================================================
-   NHẠC NỀN — CHỈ 1 BÀI MP3 LOCAL
+   NHẠC NỀN — HỖ TRỢ NHIỀU BÀI MP3
    ============================================================ */
 const bgm = new Audio();
 bgm.loop = true;
